@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-perfecto-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
@@ -35,10 +36,47 @@ module.exports = function (config) {
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
     autoWatch: true,
-    browsers: ['Chrome'],
+    // browsers: ['Chrome'],
+    browsers: ['Perfecto'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    perfecto: {
+      tunnelId: 'ab249d19-11c9-4ab3-b506-7fb92a02dbbe',
+      //host: '192.168.1.47',
+      host: 'localhost',
+      perfectoConnect: '/Users/admin/Downloads/perfectoconnect',
+      perfectoUrl: 'https://beta.perfectomobile.com/nexperience/perfectomobile/wd/hub',
+      securityToken: '',
+      testName: 'Hristo G Karma Test Runner',
+      jobName: 'Karma_Test',
+      jobNumber: '1',
+      testPerSpec: false,
+      compactReport: false,
+      keepAlive: 0,
+      keepAliveDuration: 0,
+      capabilities: {
+        platformName : 'Windows',
+        platformVersion : '10',
+        browserName : 'Chrome',
+        browserVersion : 'latest',
+        resolution : '1280x1024',
+        location : 'US East'
+      }
+      // capabilities: {
+      //   browserName : 'Chrome',
+      //   firstMatch: [{
+      //     platformName : 'Windows',
+      //     browserVersion : 'latest',
+      //     "perfecto:options": {
+      //       securityToken: '',
+      //       platformVersion : '10',
+      //       resolution : '1280x1024',
+      //       location : 'US East',
+      //       }
+      //   }]
+      // }
+    }
   });
 };
